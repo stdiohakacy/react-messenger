@@ -1,13 +1,13 @@
 import Feed from '../../components/feed/Feed';
-import Rightbar from '../../components/rightbar/Rightbar';
-import Topbar from '../../components/topbar/Topbar';
+import RightBar from '../../components/rightbar/RightBar';
 import Sidebar from '../../components/sidebar/Sidebar'
 import './profile.css';
+import TopBar from '../../components/topbar/TopBar';
 
 export default function Profile() {
     return (
         <>
-            <Topbar />
+            <TopBar />
             <div className="profile">
                 <Sidebar />
                 <div className="profileRight">
@@ -31,7 +31,7 @@ export default function Profile() {
                     </div>
                     <div className="profileRightBottom">
                         <Feed />
-                        <Rightbar />
+                        <RightBar />
                     </div>
                 </div>
             </div>

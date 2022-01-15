@@ -1,16 +1,13 @@
-import Login from "./pages/login/Login";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
 import { useContext } from "react";
+import {
+  BrowserRouter as Router, Redirect, Route, Switch
+} from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 import Home from "./pages/home/Home";
-import Register from "./pages/register/Register";
-import Message from "./components/message/Message";
+import Login from "./pages/login/Login";
+import Messenger from "./pages/messenger/Messenger";
 import Profile from "./pages/profile/Profile";
+import Register from "./pages/register/Register";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -22,7 +19,7 @@ function App() {
         </Route>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register"><Register /></Route>
-        <Route path="/message"><Message /></Route>
+        <Route path="/messenger"><Messenger /></Route>
         <Route path="/profile/:username"><Profile /></Route>
       </Switch>
     </Router>

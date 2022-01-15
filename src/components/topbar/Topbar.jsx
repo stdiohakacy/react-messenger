@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { Chat, Person, Search, Notifications } from '@material-ui/icons'
 import './topbar.css';
 
-export default function Topbar() {
+export default function TopBar() {
     const { user } = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
