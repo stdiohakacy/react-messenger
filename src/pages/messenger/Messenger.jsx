@@ -18,7 +18,7 @@ export default function Messenger() {
                 <div className="chatBox">
                     <div className="chatBoxWrapper">
                         <div className="chatBoxTop">
-                            {/* <div><Message /></div> */}
+                            <div><Message /></div>
                         </div>
                         <div className="chatBoxBottom">
                             <textarea
@@ -34,7 +34,7 @@ export default function Messenger() {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        {/* <ChatOnline /> */}
+                        <ChatOnline />
                     </div>
                 </div>
             </div>
