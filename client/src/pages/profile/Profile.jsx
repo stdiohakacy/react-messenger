@@ -1,10 +1,24 @@
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Feed from '../../components/feed/Feed';
 import RightBar from '../../components/rightbar/RightBar';
-import Sidebar from '../../components/sidebar/Sidebar'
-import './profile.css';
+import Sidebar from '../../components/sidebar/Sidebar';
 import TopBar from '../../components/topbar/TopBar';
+import './profile.css';
 
 export default function Profile() {
+    const [user, setUser] = useState({});
+    const { username } = useParams();
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const response = await axios.get(`http://localhost:8800/api/users?username=${username}`);
+            setUser(response.data);
+        }
+        fetchUser();
+    }, [ username ])
+
     return (
         <>
             <TopBar />
@@ -15,18 +29,18 @@ export default function Profile() {
                         <div className="profileCover">
                             <img
                                 className="profileCoverImg"
-                                src="https://bestcoverpix.com/wp-content/uploads/2014/01/best-cover-photo.jpg"
+                                src={user.coverPicture}
                                 alt=""
                             />
                             <img
                                 className="profileUserImg"
-                                src="https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg"
+                                src={user.profilePicture}
                                 alt=""
                             />
                         </div>
                         <div className="profileInfo">
-                            <h4 className="profileInfoName">duynguyen2210</h4>
-                            <span className="profileInfoDesc">user description</span>
+                            <h4 className="profileInfoName">{user.username}</h4>
+                            <span className="profileInfoDesc">{user.desc}</span>
                         </div>
                     </div>
                     <div className="profileRightBottom">
