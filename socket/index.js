@@ -13,7 +13,7 @@ const removeUser = socketId => {
 const getUser = userId => users.find(user => user.userId === userId);
 
 io.on("connection", socket => {
-    console.log(`A user connected`);
+    console.log(`Socket ${socket.id} connected!`);
 
     socket.on('addUser', userId => {
         addUser(userId, socket.id);
@@ -29,7 +29,7 @@ io.on("connection", socket => {
     })
     
     socket.on("disconnect", () => {
-        console.log(`User disconnect`);
+        console.log(`Socket ${socket.id} disconnected!`);
         removeUser(socket.id);
         io.emit('getUsers', users);
     })

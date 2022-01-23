@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { API_ENDPOINT } from '../../config';
 import Feed from '../../components/feed/Feed';
 import RightBar from '../../components/rightbar/RightBar';
 import Sidebar from '../../components/sidebar/Sidebar';
@@ -13,7 +14,7 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await axios.get(`http://localhost:8800/api/users?username=${username}`);
+            const response = await axios.get(`${API_ENDPOINT}/users?username=${username}`);
             setUser(response.data);
         }
         fetchUser();
