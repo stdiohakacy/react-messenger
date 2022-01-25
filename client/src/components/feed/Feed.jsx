@@ -12,16 +12,17 @@ export default function Feed({ username }) {
     
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = username
-                ? await axios.get(`${API_ENDPOINT}/posts/profile/${username}`)
-                : await axios.get(`${API_ENDPOINT}/${user._id}`);
+            const res = username
+                ? await axios.get(`${API_ENDPOINT}/posts/profile/` + username)
+                : await axios.get(`${API_ENDPOINT}/posts/timeline/` + user._id);
             setPosts(
-                response.data.sort((p1, p2) => (new Date(p2.createdAt) - new Date(p1.createdAt)))
-            )
-        }
-
+                res.data.sort((p1, p2) => {
+                return new Date(p2.createdAt) - new Date(p1.createdAt);
+                })
+            );
+        };
         fetchPosts();
-    }, [username, user._id])
+    }, [username, user._id]);
 
     return (
         <div className="feed">

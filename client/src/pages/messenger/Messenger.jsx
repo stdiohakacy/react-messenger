@@ -101,7 +101,7 @@ export default function Messenger() {
                         {
                             conversations.map(conversation => (
                                 <div onClick={() => setCurrentChat(conversation)}>
-                                    <Conversation />
+                                    <Conversation conversation={conversation} currentUser={user} />
                                 </div>
                             ))
                         }
@@ -141,7 +141,11 @@ export default function Messenger() {
                 </div>
                 <div className="chatOnline">
                     <div className="chatOnlineWrapper">
-                        <ChatOnline />
+                    <ChatOnline
+                        onlineUsers={onlineUsers}
+                        currentId={user._id}
+                        setCurrentChat={setCurrentChat}
+                    />
                     </div>
                 </div>
             </div>
